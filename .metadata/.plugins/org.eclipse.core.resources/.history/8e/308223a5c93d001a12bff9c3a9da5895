@@ -1,0 +1,29 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+import java.util.ArrayList;
+/**
+ * 
+ * @author CC318142
+ *
+ */
+public class OverideRules {
+
+	public ArrayList<OverideRulesList> overideRulesLists;
+	public ArrayList<String> productID;
+	public ArrayList<String> productOverrideRule;
+
+	public OverideRules() {
+		super();
+		overideRulesLists = new ArrayList<OverideRulesList>();
+		productID  = new ArrayList<String>();
+	}
+
+	public ArrayList<OverideRulesList> getOverideRulesLists() {
+		return overideRulesLists;
+	}
+
+	public void setOverideRulesLists(ArrayList<OverideRulesList> overideRulesLists) {
+		this.overideRulesLists = overideRulesLists;
+	}
+
+}

@@ -1,0 +1,182 @@
+package za.co.nedbank.onboarding.routing.apis.resources;
+
+import java.util.ArrayList;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import za.co.nedbank.onboarding.routing.constants.OnboardingApplicationRoutingConstants;
+import za.co.nedbank.onboarding.routing.dto.ApplicationContextList;
+import za.co.nedbank.onboarding.routing.dto.OverideRules;
+import za.co.nedbank.onboarding.routing.dto.ResultSetType;
+import za.co.nedbank.onboarding.routing.dto.ProductAccessResponse;
+import za.co.nedbank.onboarding.routing.dto.OverideRulesList;;
+
+/**
+ * za.co.nedbank.onboarding.routing.apis.resources.OnboardingApplicationRouting<br>
+ * 
+ * Copyright (c) 2019 - Kabini Eric (CC318142)
+ * 
+ * All rights reserved.
+ **/
+@Path("/informationandtechnologymanagement/v1")
+public class OnboardingApplicationRouting {
+
+	@POST
+	@Path("/onboardingapplicationroutings")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response ProductAccessRequest(ApplicationContextList arrPartyRelInput,
+			@HeaderParam("Authorization") String authorization) {
+		// To Apply Business Logic
+		// 1. Check for uerID if it is STAFF or NOT using CONTEXTVALUE
+		// 2. Use CONTEXTVALUE to determine Access Restriction
+		ResultSetType resultSetType = new ResultSetType();
+		String contextType = arrPartyRelInput.getContextType().toLowerCase();
+		String contextValue = arrPartyRelInput.getContextValue().toLowerCase();
+		System.out.println("ContextType : " + contextType);
+		System.out.println("ContextValue : " + contextValue);
+		int checkSize = contextValue.length();
+		if(checkSize > 8 ) {
+		// check if it's STAFF
+		if (contextValue.startsWith(OnboardingApplicationRoutingConstants.CC_STAFF.toLowerCase()) || contextValue.startsWith(OnboardingApplicationRoutingConstants.NB_STAFF.toLowerCase())) {
+			// set Access restriction as Hide Product Selection
+			ProductAccessResponse productAccessResponse = new ProductAccessResponse();
+
+			ArrayList<String> nedbankProductId = new ArrayList<String>();
+			nedbankProductId.add("1032");
+			nedbankProductId.add("1034");
+			nedbankProductId.add("1042");
+			nedbankProductId.add("1043");
+			nedbankProductId.add("1024");
+			nedbankProductId.add("1025");
+
+			ArrayList<OverideRulesList> overideRulesLists = new ArrayList<OverideRulesList>();
+
+			for (String nedBankUsers : nedbankProductId) {
+				OverideRulesList overRuleList = new OverideRulesList();
+				overRuleList.setProductID(nedBankUsers);
+				overRuleList.setProductOverrideRule(OnboardingApplicationRoutingConstants.HIDE_PRODUCT_SELECTION);
+				overideRulesLists.add(overRuleList);
+			}
+
+			OverideRules overideRules = new OverideRules();
+
+			overideRules.setOverideRulesLists(overideRulesLists);
+
+			ArrayList<OverideRules> orlist = new ArrayList<OverideRules>();
+
+			orlist.add(overideRules);
+			System.out.print("OverideRules: " + orlist);
+			productAccessResponse.setOverideRules(orlist);
+
+			resultSetType.setResultCode("NEDBANK");
+			resultSetType.setResultDescription("WARNING");
+			ArrayList<ResultSetType> rslist = new ArrayList<ResultSetType>();
+			rslist.add(resultSetType);
+			productAccessResponse.setResultSetType(rslist);
+
+			ArrayList<OverideRules> orl = productAccessResponse.getOverideRules();
+			ArrayList<ResultSetType> rs = productAccessResponse.getResultSetType();
+
+			return Response.ok("Product Access Rule Description: Credit Card Whitelist \n".concat(orlist.toString()))
+					.build();
+
+		} else if (isValidRange(OnboardingApplicationRoutingConstants.IP_START, OnboardingApplicationRoutingConstants.IP_END, contextValue)) {
+			// set Access restriction URL
+			ProductAccessResponse productAccessResponse = new ProductAccessResponse();
+			ArrayList<String> nonnedbankProductId = new ArrayList<String>();
+			nonnedbankProductId.add("1391");
+			nonnedbankProductId.add("1348");
+			nonnedbankProductId.add("1126");
+			nonnedbankProductId.add("1360");
+			nonnedbankProductId.add("1199");
+			nonnedbankProductId.add("1134");
+
+			ArrayList<OverideRulesList> overideRulesLists = new ArrayList<OverideRulesList>();
+
+			for (String noneNedbankUsers : nonnedbankProductId) {
+				OverideRulesList overRuleList = new OverideRulesList();
+				overRuleList.setProductID(noneNedbankUsers);
+				overRuleList.setProductOverrideRule(OnboardingApplicationRoutingConstants.NEDBANK_URL);
+				overideRulesLists.add(overRuleList);
+			}
+			OverideRules overideRules = new OverideRules();
+
+			overideRules.setOverideRulesLists(overideRulesLists);
+
+			ArrayList<OverideRules> orlist = new ArrayList<OverideRules>();
+
+			orlist.add(overideRules);
+			System.out.print("OverideRules: " + orlist);
+			productAccessResponse.setOverideRules(orlist);
+
+			resultSetType.setResultCode("NEDBANK");
+			resultSetType.setResultDescription("WARNING");
+			ArrayList<ResultSetType> rslist = new ArrayList<ResultSetType>();
+			rslist.add(resultSetType);
+			productAccessResponse.setResultSetType(rslist);
+
+			ArrayList<OverideRules> orl = productAccessResponse.getOverideRules();
+			ArrayList<ResultSetType> rs = productAccessResponse.getResultSetType();
+
+			return Response.ok("Product Access Rule Description: Investment \n".concat(orlist.toString())).build();
+		} else {
+			return Response.ok("No results found for:  " + contextValue).build();
+		}
+		}
+		else {
+			return Response.ok("No results found for:  " + contextValue).build();
+		}
+	}
+
+	/** Method to check NB and CC Staff Employees
+	 * @param contextValue
+	 * @return
+	 */
+	public static boolean checkAccessType(String contextValue) {
+		if (contextValue.startsWith(OnboardingApplicationRoutingConstants.CC_STAFF) || contextValue.startsWith(OnboardingApplicationRoutingConstants.NB_STAFF)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @param ip
+	 * @return
+	 */
+	public static long ipToLong(InetAddress ip) {
+		byte[] octets = ip.getAddress();
+		long result = 0;
+		for (byte octet : octets) {
+			result <<= 8;
+			result |= octet & 0xff;
+		}
+		return result;
+	}
+
+	/** Method to check IP address range
+	 * @param ipStart
+	 * @param ipEnd
+	 * @param ipToCheck
+	 * @return
+	 */
+	public static boolean isValidRange(String ipStart, String ipEnd, String ipToCheck) {
+		try {
+			long ipLo = ipToLong(InetAddress.getByName(ipStart));
+			long ipHi = ipToLong(InetAddress.getByName(ipEnd));
+			long ipToTest = ipToLong(InetAddress.getByName(ipToCheck));
+			return (ipToTest >= ipLo && ipToTest <= ipHi);
+		} catch (UnknownHostException e) {
+			System.out.println("IP address is it not within the range");
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+}

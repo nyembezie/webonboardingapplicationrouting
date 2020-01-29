@@ -1,0 +1,24 @@
+package za.co.nedbank.onboarding.routing.constants;
+/**
+za.co.nedbank.onboarding.routing.apis.resources.OnboardingApplicationRoutingConstants<br>
+
+Copyright (c) 2019 - Kabini Eric (CC318142)
+
+All rights reserved.
+**/
+public class OnboardingApplicationRoutingConstants {
+	
+	public static final String ENVT_DEV =  "DEV";
+	public static final String ENVT_ETE =  "ETE";
+	public static final String ENVT_QA =   "QA";
+	public static final String ENVT_PROD = "PROD";
+	public static final String HIDE_PRODUCT_SELECTION = "Hide Product Selection";
+	public static final String CREDIT_CARD_WHITE_LIST = "Credit Card White List";
+	public static final String NEDBANK_URL = "https://nedbank.co.za/content/nedbank/desktop/gt/en/personal/save-and-invest/investment-accounts.html";
+	public static final String NB_STAFF = "NB";
+	public static final String CC_STAFF = "CC";
+	public static final String IP_START = "10.59.0.0";
+	public static final String IP_END = "10.59.259.255";
+
+
+}

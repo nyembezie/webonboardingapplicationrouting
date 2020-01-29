@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="WebSphere Application Server V8.5">
+	<locations>
+		<location path="C:/IBM/WAS8558/dev" type="Directory"/>
+		<location path="C:/IBM/WAS8558/dev/JavaEE" type="Directory"/>
+		<location path="C:/IBM/WAS8558/dev/sip" type="Directory"/>
+		<location path="C:/IBM/WAS8558/dev/osgi/4.2" type="Directory"/>
+		<location path="C:/Nedbank/Code/CR2/.metadata/.plugins/com.ibm.etools.aries.core/system/" type="Directory"/>
+	</locations>
+</target>

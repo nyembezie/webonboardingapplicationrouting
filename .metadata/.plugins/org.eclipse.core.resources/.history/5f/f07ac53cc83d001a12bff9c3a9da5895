@@ -1,0 +1,28 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+public class OverideRulesList {
+
+	public String productID;
+	public String productOverrideRule;
+
+	public OverideRulesList() {
+		super();
+	}
+
+	public String getProductID() {
+		return productID;
+	}
+
+	public void setProductID(String productID) {
+		this.productID = productID;
+	}
+
+	public String getProductOverrideRule() {
+		return productOverrideRule;
+	}
+
+	public void setProductOverrideRule(String productOverrideRule) {
+		this.productOverrideRule = productOverrideRule;
+	}
+
+}

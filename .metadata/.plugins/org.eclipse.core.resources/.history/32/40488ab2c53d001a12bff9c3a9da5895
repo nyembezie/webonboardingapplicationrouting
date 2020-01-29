@@ -1,0 +1,10 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+public class ProductAccessRequest {
+	
+	public ProductAccessRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

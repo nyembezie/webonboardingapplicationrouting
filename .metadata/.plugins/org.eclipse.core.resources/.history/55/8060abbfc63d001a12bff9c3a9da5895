@@ -1,0 +1,21 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+import java.util.ArrayList;
+
+public class ApplicationContexts {
+
+	public ArrayList<ApplicationContexts> applicationContexts = new ArrayList<ApplicationContexts>();
+
+	public ApplicationContexts() {
+		super();
+	}
+
+	public ArrayList<ApplicationContexts> getApplicationContexts() {
+		return applicationContexts;
+	}
+
+	public void setApplicationContexts(ArrayList<ApplicationContexts> applicationContexts) {
+		this.applicationContexts = applicationContexts;
+	}
+
+}

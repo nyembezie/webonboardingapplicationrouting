@@ -1,0 +1,26 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+import java.util.ArrayList;
+
+/**
+za.co.nedbank.onboarding.routing.dto.ProductaccessResponse<br>
+
+Copyright (c) 2019 - Kabini 'MA-E' Eric (CC318142)
+
+All rights reserved.
+**/
+public class ProductaccessResponse {
+
+	public ArrayList<OverideRules> overideRules;
+	public ArrayList<ResultSetType> resultSetType;
+
+
+	public ProductaccessResponse() {
+		super();
+		overideRules = new ArrayList<OverideRules>();
+		resultSetType = new ArrayList<ResultSetType>();
+	}
+
+	
+
+}

@@ -1,0 +1,20 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+public class ProductAccessRequest {
+
+	ApplicationContexts applicationContexts;
+
+	public ProductAccessRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ApplicationContexts getApplicationContexts() {
+		return applicationContexts;
+	}
+
+	public void setApplicationContexts(ApplicationContexts applicationContexts) {
+		this.applicationContexts = applicationContexts;
+	}
+
+}

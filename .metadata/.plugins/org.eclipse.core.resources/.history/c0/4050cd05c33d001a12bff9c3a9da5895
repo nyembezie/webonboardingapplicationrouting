@@ -1,0 +1,5 @@
+package za.co.nedbank.onboarding.apis.applications;
+
+public class OnboardingApplicationRouting {
+
+}

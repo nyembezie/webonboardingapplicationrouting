@@ -1,0 +1,49 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+import java.util.ArrayList;
+
+/**
+za.co.nedbank.onboarding.routing.dto.OnboardingApplicationRouting<br>
+
+Copyright (c) 2019 - Kabini 'MA-E' Eric (CC318142)
+
+All rights reserved.
+**/
+public class OverideRules {
+
+	public ArrayList<OverideRulesList> overideRulesLists;
+	public ArrayList<String> productID; //to ask
+	public ArrayList<String> productOverrideRule;//to ask
+
+	public OverideRules() {
+		super();
+		overideRulesLists = new ArrayList<OverideRulesList>();
+		productID = new ArrayList<String>();
+		productOverrideRule = new ArrayList<String>();
+	}
+
+	public ArrayList<OverideRulesList> getOverideRulesLists() {
+		return overideRulesLists;
+	}
+
+	public void setOverideRulesLists(ArrayList<OverideRulesList> overideRulesLists) {
+		this.overideRulesLists = overideRulesLists;
+	}
+
+	public ArrayList<String> getProductID() {
+		return productID;
+	}
+
+	public void setProductID(ArrayList<String> productID) {
+		this.productID = productID;
+	}
+
+	public ArrayList<String> getProductOverrideRule() {
+		return productOverrideRule;
+	}
+
+	public void setProductOverrideRule(ArrayList<String> productOverrideRule) {
+		this.productOverrideRule = productOverrideRule;
+	}
+
+}

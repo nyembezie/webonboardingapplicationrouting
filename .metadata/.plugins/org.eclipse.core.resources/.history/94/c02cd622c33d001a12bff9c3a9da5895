@@ -1,0 +1,7 @@
+package za.co.nedbank.onboarding.apis.applications;
+
+import javax.ws.rs.core.Application;
+
+public class OnboardingRoutingApplication extends Application {
+
+}

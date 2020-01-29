@@ -1,0 +1,14 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+public class ApplicationContextList {
+	
+	public String contextType;
+	public String contextValue;
+	
+	public ApplicationContextList() {
+		super();
+	}
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package za.co.nedbank.onboarding.routing.constants;
+
+public class OnboardingApplicationRoutingConstants {
+
+}

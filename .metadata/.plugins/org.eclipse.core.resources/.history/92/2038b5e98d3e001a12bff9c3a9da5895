@@ -1,0 +1,16 @@
+package za.co.nedbank.onboarding.routing.constants;
+/**
+za.co.nedbank.onboarding.routing.apis.resources.OnboardingApplicationRoutingConstants<br>
+
+Copyright (c) 2019 - Kabini 'MA-E' Eric (CC318142)
+
+All rights reserved.
+**/
+public class OnboardingApplicationRoutingConstants {
+	
+	public static final String ENVT_DEV =  "DEV";
+	public static final String ENVT_ETE =  "ETE";
+	public static final String ENVT_QA =   "QA";
+	public static final String ENVT_PROD = "PROD";
+
+}

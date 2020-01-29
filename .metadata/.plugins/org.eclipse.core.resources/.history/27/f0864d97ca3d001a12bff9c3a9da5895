@@ -1,0 +1,29 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+public class ResultSetType {
+
+	String resultCode;
+	String resultDescription;
+
+	public ResultSetType() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getResultCode() {
+		return resultCode;
+	}
+
+	public void setResultCode(String resultCode) {
+		this.resultCode = resultCode;
+	}
+
+	public String getResultDescription() {
+		return resultDescription;
+	}
+
+	public void setResultDescription(String resultDescription) {
+		this.resultDescription = resultDescription;
+	}
+
+}

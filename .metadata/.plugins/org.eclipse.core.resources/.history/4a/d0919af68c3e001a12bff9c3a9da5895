@@ -1,0 +1,56 @@
+package za.co.nedbank.onboarding.routing.dto;
+
+import java.util.ArrayList;
+
+/**
+za.co.nedbank.onboarding.routing.dto.ProductaccessResponse<br>
+
+Copyright (c) 2019 - Kabini 'MA-E' Eric (CC318142)
+
+All rights reserved.
+**/
+public class ProductaccessResponse {
+
+	public ArrayList<OverideRulesList> overideRulesLists;
+	public ArrayList<ResultSetType> resultSetType;
+	public String resultCode;
+	public String resultDescription;
+
+	public ProductaccessResponse() {
+		super();
+		overideRulesLists = new ArrayList<OverideRulesList>();
+	}
+
+	public ArrayList<OverideRulesList> getOverideRulesLists() {
+		return overideRulesLists;
+	}
+
+	public void setOverideRulesLists(ArrayList<OverideRulesList> overideRulesLists) {
+		this.overideRulesLists = overideRulesLists;
+	}
+
+	public ArrayList<ResultSetType> getResultSetType() {
+		return resultSetType;
+	}
+
+	public void setResultSetType(ArrayList<ResultSetType> resultSetType) {
+		this.resultSetType = resultSetType;
+	}
+
+	public String getResultCode() {
+		return resultCode;
+	}
+
+	public void setResultCode(String resultCode) {
+		this.resultCode = resultCode;
+	}
+
+	public String getResultDescription() {
+		return resultDescription;
+	}
+
+	public void setResultDescription(String resultDescription) {
+		this.resultDescription = resultDescription;
+	}
+
+}
